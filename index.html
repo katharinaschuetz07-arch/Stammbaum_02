@@ -80,7 +80,9 @@ button.btn.red{background:var(--red);border-color:var(--red);color:#fff}
 .sep{align-self:center;color:#c9bfa5}
 .orig{background:#fdf8ea;border:1px solid var(--gold);border-radius:10px;padding:10px 12px;margin-top:16px;font-size:.75rem;line-height:1.55}
 .orig .ot{font-weight:bold;color:var(--gold);letter-spacing:.1em;text-transform:uppercase;font-size:.64rem;margin-bottom:4px}
-.tl{border-left:3px solid var(--navy);margin:8px 0 8px 4px;padding:6px 0 6px 14px}
+.tl{border-left:3px solid var(--navy);margin:8px 0 8px 4px;padding:6px 0 6px 14px;cursor:pointer}
+.tl:active{background:rgba(176,141,63,.12)}
+.tl .more{font-size:.68rem;color:var(--navy);margin-top:3px;font-weight:bold}
 .tl .yr{font-weight:bold;color:var(--red);font-size:.8rem}
 .tl .tx{font-size:.78rem;line-height:1.5;color:#333}
 .ncard{border:1px solid var(--line);border-left:4px solid var(--gold);border-radius:10px;padding:10px 12px;margin-bottom:10px;background:#fffdf8}
@@ -118,12 +120,14 @@ footer{max-width:820px;margin:0 auto;padding:10px 10px 26px;text-align:center;co
 .cv-copy{font-size:.6rem;opacity:.6;margin-top:18px}
 .speakrow{display:flex;gap:8px;flex-wrap:wrap}
 
+.azb{background:#faf6ee;border:1px solid #e5dcc8;border-radius:6px;color:#012169;font-weight:700;font-size:.78rem;padding:4px 8px;cursor:pointer;font-family:inherit}
+.azb.on{background:#012169;color:#fff;border-color:#012169}
 </style>
 </head>
 <body>
 <header>
   <div><h1>🏛️ Stämme-Datenbank · Das alte Europa</h1>
-  <div class="sub">Von den Germanen des Tacitus bis zu den Slawen Mecklenburgs · Version 1.7</div></div>
+  <div class="sub">Von den Germanen des Tacitus bis zu den Slawen Mecklenburgs · Version 2.9</div></div>
   <nav>
     <button data-nav="staemme" class="on" onclick="go('staemme')">📇 Stämme A–Z</button>
     <button data-nav="roemer" onclick="go('roemer')">🦅 Römer-Zeitleiste</button>
@@ -149,7 +153,7 @@ footer{max-width:820px;margin:0 auto;padding:10px 10px 26px;text-align:center;co
     <div class="regions"><div class="rt">⭐ Deine Stämme nach Region · einfach antippen</div>
       <div class="reggrid">
         <div class="regcard reg-meck"><div class="re">🌾</div><div class="rn">Mecklenburg (Teterow)</div>
-          <div class="rc"><span onclick="selectTribe('zirzipanen')">Zirzipanen ⭐</span><span onclick="selectTribe('obodriten')">Obodriten</span><span onclick="selectTribe('warnower')">Warnower</span><span onclick="selectTribe('lutizen')">Lutizen</span></div></div>
+          <div class="rc"><span onclick="selectTribe('zirzipanen')">Zirzipanen ⭐</span><span onclick="selectTribe('abodriten')">Abodriten</span><span onclick="selectTribe('warnower')">Warnower</span><span onclick="selectTribe('lutizen')">Lutizen</span></div></div>
         <div class="regcard reg-ruegen"><div class="re">🏝️</div><div class="rn">Rügen &amp; Küste</div>
           <div class="rc"><span onclick="selectTribe('rujanen')">Rujanen · Swantewit bei Kap Arkona 🛕</span><span onclick="selectTribe('rugier')">Rugier („Rugana")</span><span onclick="selectTribe('woliner')">Woliner · Vineta</span></div></div>
         <div class="regcard reg-ucker"><div class="re">🌲</div><div class="rn">Uckermark &amp; Brandenburg</div>
@@ -167,18 +171,22 @@ footer{max-width:820px;margin:0 auto;padding:10px 10px 26px;text-align:center;co
 <section id="roemer" class="view">
   <div class="card">
     <h3>🦅 Wann die Römer kamen – Zeitleiste</h3>
-    <div class="tl"><div class="yr">58–51 v. Chr.</div><div class="tx"><b>Cäsar erobert Gallien</b> – Rom rückt an den Rhein. Kämpfe gegen Usipeter und Tenkterer (55 v. Chr.).</div></div>
-    <div class="tl"><div class="yr">12–9 v. Chr.</div><div class="tx"><b>Drusus' Feldzüge</b> bis an die Elbe – in den Westen deines Heimatgebietes.</div></div>
-    <div class="tl"><div class="yr">9 n. Chr.</div><div class="tx"><b>Varusschlacht</b> (vermutlich Kalkriese): Arminius vernichtet drei Legionen. Rom zieht sich hinter den Rhein zurück.</div></div>
-    <div class="tl"><div class="yr">14–16 n. Chr.</div><div class="tx"><b>Germanicus' Rache-Feldzüge</b> durch das Land der Marsen, Brukterer und Chatten (NRW!). Danach gibt Rom Germanien auf.</div></div>
-    <div class="tl"><div class="yr">ab 83–85 n. Chr.</div><div class="tx"><b>Limes</b>: Köln und Xanten sind römisch – <b>Mecklenburg, Brandenburg und Posen nie</b>. 98 n. Chr. schreibt Tacitus die „Germania".</div></div>
-    <div class="tl"><div class="yr">166–180 n. Chr.</div><div class="tx"><b>Markomannenkriege</b>: Rom steht an der Kippe.</div></div>
-    <div class="tl"><div class="yr">ca. 260 n. Chr.</div><div class="tx"><b>Limesfall</b> – die Völkerwanderung beginnt.</div></div>
-    <div class="tl"><div class="yr">6./7. Jh. n. Chr.</div><div class="tx"><b>Die Slawen rücken ein</b> – Mecklenburg wird Obodriten- und Zirzipanen-Land.</div></div>
-    <div class="tl"><div class="yr">983 n. Chr.</div><div class="tx"><b>Der große Slawenaufstand</b> beendet die deutsche Herrschaft östlich der Elbe für fast 200 Jahre.</div></div>
-    <div class="tl"><div class="yr">1147–1168 n. Chr.</div><div class="tx"><b>Wendenkreuzzug und Fall von Arkona</b> – die letzten heidnischen Slawenstämme werden unterworfen.</div></div>
+    <p style="font-size:.75rem;color:#666;margin-bottom:10px">Antippen öffnet die ganze Epoche als Lernkarte: mehr Hintergrund, und wer zu dieser Zeit in Rom das Sagen hatte. Mit 🔊 wird die Karte vorgelesen, mit ⏹ gestoppt.</p>
+    <div class="tl" onclick="showEra(0)"><div class="yr">58–51 v. Chr.</div><div class="tx"><b>Cäsar erobert Gallien</b> – Rom rückt an den Rhein. Kämpfe gegen Usipeter und Tenkterer (55 v. Chr.).</div><div class="more">👆 Epoche öffnen · 🏛️ Wer regierte in Rom?</div></div>
+    <div class="tl" onclick="showEra(1)"><div class="yr">12–9 v. Chr.</div><div class="tx"><b>Drusus’ Feldzüge</b> bis an die Elbe – in den Westen deines Heimatgebietes.</div><div class="more">👆 Epoche öffnen · 🏛️ Wer regierte in Rom?</div></div>
+    <div class="tl" onclick="showEra(2)"><div class="yr">9 n. Chr.</div><div class="tx"><b>Varusschlacht</b> (vermutlich Kalkriese): Arminius vernichtet drei Legionen. Rom zieht sich hinter den Rhein zurück.</div><div class="more">👆 Epoche öffnen · 🏛️ Wer regierte in Rom?</div></div>
+    <div class="tl" onclick="showEra(3)"><div class="yr">14–16 n. Chr.</div><div class="tx"><b>Germanicus’ Rache-Feldzüge</b> durch das Land der Marsen, Brukterer und Chatten (NRW!). Danach gibt Rom Germanien auf.</div><div class="more">👆 Epoche öffnen · 🏛️ Wer regierte in Rom?</div></div>
+    <div class="tl" onclick="showEra(4)"><div class="yr">ab 83–85 n. Chr.</div><div class="tx"><b>Limes</b>: Köln und Xanten sind römisch – <b>Mecklenburg, Brandenburg und Posen nie</b>. 98 n. Chr. schreibt Tacitus die „Germania“.</div><div class="more">👆 Epoche öffnen · 🏛️ Wer regierte in Rom?</div></div>
+    <div class="tl" onclick="showEra(5)"><div class="yr">166–180 n. Chr.</div><div class="tx"><b>Markomannenkriege</b>: Rom steht an der Kippe.</div><div class="more">👆 Epoche öffnen · 🏛️ Wer regierte in Rom?</div></div>
+    <div class="tl" onclick="showEra(6)"><div class="yr">ca. 260 n. Chr.</div><div class="tx"><b>Limesfall</b> – die Völkerwanderung beginnt.</div><div class="more">👆 Epoche öffnen · 🏛️ Wer regierte in Rom?</div></div>
+    <div class="tl" onclick="showEra(7)"><div class="yr">476 n. Chr.</div><div class="tx"><b>Westrom fällt</b> – Odoaker entthront den letzten Kaiser. Das antike Rom ist Geschichte.</div><div class="more">👆 Epoche öffnen · 🏛️ Wer regierte in Rom?</div></div>
+    <div class="tl" onclick="showEra(8)"><div class="yr">6./7. Jh. n. Chr.</div><div class="tx"><b>Die Slawen rücken ein</b> – Mecklenburg wird Obodriten- und Zirzipanen-Land.</div><div class="more">👆 Epoche öffnen · 🏛️ Wer regierte in Rom?</div></div>
+    <div class="tl" onclick="showEra(9)"><div class="yr">789–804 n. Chr.</div><div class="tx"><b>Karl der Große und die Abodriten</b> – Franken und Sachsenkriege, die Slawen werden Nachbarn der neuen Großmacht.</div><div class="more">👆 Epoche öffnen · 🏛️ Wer regierte in Rom?</div></div>
+    <div class="tl" onclick="showEra(10)"><div class="yr">983 n. Chr.</div><div class="tx"><b>Der große Slawenaufstand</b> beendet die deutsche Herrschaft östlich der Elbe für fast 200 Jahre.</div><div class="more">👆 Epoche öffnen · 🏛️ Wer regierte in Rom?</div></div>
+    <div class="tl" onclick="showEra(11)"><div class="yr">1147–1168 n. Chr.</div><div class="tx"><b>Wendenkreuzzug und Fall von Arkona</b> – die letzten heidnischen Slawenstämme werden unterworfen.</div><div class="more">👆 Epoche öffnen · 🏛️ Wer regierte in Rom?</div></div>
   </div>
 </section>
+<section id="eradetail" class="view"><div id="erapanel"></div></section>
 <section id="namen" class="view">
   <div class="card">
     <h3>📖 Familiennamen-Lexikon deiner Familie</h3>
@@ -191,12 +199,15 @@ footer{max-width:820px;margin:0 auto;padding:10px 10px 26px;text-align:center;co
   <div class="card">
     <h3>🌳 Ahnen-Datenbank – Katharinas Familie</h3>
     <input id="psuche" placeholder="🔍 Namen suchen (Vorname, Nachname, Geburtsname) …" oninput="renderPersons()">
-    <div class="hint" style="margin-top:6px;text-align:left">Alle 140 Personen · Heirat deiner Eltern: 30.09.1955 in Jördensdorf</div>
+    <div id="azbar" style="display:flex;flex-wrap:wrap;gap:4px;margin-top:8px"></div>
+    <div class="hint" style="margin-top:6px;text-align:left">Alle 162 Personen · Heirat deiner Eltern: 30.09.1955 in Jördensdorf</div>
   </div>
   <div class="card"><div id="plist" class="plist"></div>
   <div class="hint">Jede Person antippen zeigt die ganze Verzweigung – Eltern, Großeltern, Partner, Kinder, Enkel, Geschwister – und ihre Stammes-Wurzeln.</div></div>
   <div class="card"><h3>📊 Statistik deiner Familie</h3><div id="statbox"></div>
   <div class="hint">Alle Zahlen werden live aus der Datenbank berechnet – sie stimmen immer mit dem Stand der Datei überein.</div></div>
+  <div class="card"><h3>📛 Die Verteilung der Familiennamen</h3><div id="namebox"></div>
+  <div class="hint">Gezählt wird der Nachname jeder Person – die Balken zeigen, wie oft jeder Name in der Familie vorkommt. Alles live berechnet.</div></div>
 </section>
 <section id="tribedetail" class="view"><div id="tpanel"></div></section>
 <section id="persondetail" class="view"><div id="ppanel"></div></section>
@@ -207,7 +218,7 @@ footer{max-width:820px;margin:0 auto;padding:10px 10px 26px;text-align:center;co
     <button class="fbundle" onclick="toggleBundle()">ARC(E)ANA</button>
     <button class="flink" onclick="openModal('dsModal')">Datenschutz</button>
   </div>
-  <div class="fcopy">Stämme-Datenbank · Version 1.0 · © 2026 Katharina Schütz</div>
+  <div class="fcopy">Stämme-Datenbank · Version 2.9 · © 2026 Katharina Schütz</div>
 </footer>
 <div class="emblem" id="emblem" onclick="toggleBundle()">
   <div class="emblem-word">ARC(E)ANA</div>
@@ -219,24 +230,27 @@ footer{max-width:820px;margin:0 auto;padding:10px 10px 26px;text-align:center;co
     <h3>Impressum</h3>
     <p><strong>Stämme-Datenbank · Das alte Europa</strong><br>
     Das Stammbuch der Familie Rath-Tabbert – meine Eltern und Großeltern</p>
-    <p><strong>Anbieterin (§ 5 DDG – Digitale-Dienste-Gesetz, vormals § 5 TKG):</strong><br>
+    <p><strong>Anbieterin (§ 5 DDG – Digitale-Dienste-Gesetz, vormals § 5 TMG):</strong><br>
     Katharina Schütz<br>
     Platz der Einheit 10<br>
     14467 Potsdam<br>
     Deutschland</p>
-    <p><strong>Zweckbestimmung:</strong> Ausschließlich für private Zwecke – die Familien-Ahnenforschung der Familie. Diese Datenbank ist <strong>unverkäuflich</strong> und <strong>nur für die Familie bestimmt</strong>.</p>
-    <p><strong>Methode &amp; Veröffentlichung:</strong> Die App ist nach der <strong>ARC(E)ANA-Lernmethode</strong> aufgebaut – meiner ganz persönlichen Lernmethode, die ich so aufbereitet habe. Sie ist in mein ganz persönliches GitHub-Konto hochgeladen.</p>
-    <p><strong>Entstehung:</strong> Die Zusammenstellung der germanischen und slawischen Stämme sowie die Programmierung dieser App erfolgten <strong>mithilfe einer KI-Unterstützung</strong>.<br>
-    <em>Hinweis: KI kann Fehler machen – jede und jeder prüfe die Angaben selbst nach.</em></p>
-<p><strong>Recherche:</strong> Die Familiendaten wurden in persönlichen Gesprächen bzw. Telefongesprächen mit den Familienmitgliedern <em>liebevoll</em> zusammengetragen. Mutti Friedeldi hat noch viele Erinnerungen aus ihrer Kindheit, und hat mir von Tante Else, Tante, Frieda und Tante Meta erzählt. Auch die O`Neals aus Texas von Tante Elisabeth`s Seite sind aufgenommen. Mutti`s Tanten und Onkels aberr auch Großvater August Wilhelm Tabbert und Friedrich Kalkbrenner finden sich in der Datenbank wieder. Wir können dank der Daten immerhin bis ins Jahr 1869 zurückblicken. Ergänzend wurden das <strong>Standesamt Teterow</strong> und das Standesamt in <strong>Kölzig (heute Kolsk, Polen)</strong> angeschrieben und Registerauszüge eingeholt, soweit noch vorhanden.</p>
-    <p><strong>Der größte Datenschatz ist das Stammbuch der Familie Rath mit den Registerauszügen:</strong> <span style="color:#757575">Meine Schwester Sarina hat sie uns vor Jahren liebevol  zusammengestellt. Darin sind, soweit möglich, sind die Namen und Daten meiner Großeltern, Eltern, Geschwister und Kinder enthalten.</span></p>
-        <p><strong>Besonderer Hinweis · Urkunden:</strong> Mir liegt eine Kopie der Sterbeurkunde meines Großvaters Wilhelm Tabbert, geb. am 26.01. 1908 in Hitzdorf vor. Diese wurde mir von <strong>Heino Gütschow</strong> zugeschickt – ein weiterer Datenschatz für die Ahnenforschung. Durch solche Urkunden lassen sich Daten zusammenführen, und es lässt sich erkennen, wie alt jemand wurde, wo er geboren wurde und wo er verstarb.</p>
-    <p><strong>Warum ich Ahnenforschung betreibe:</strong> <em>Wer seine Wurzeln nicht kennt, kann die Zukunft nicht gestalten.</em> Das ist es, was mich antreibt: Ich möchte wissen – wer bin ich? Woher komme ich? Das ist in der heutigen Zeit für mich sehr, sehr wichtig.</p>
-    <p><strong>Herzlichen Dank allen, die daran mitgewirkt haben –</strong> und ein Dankeschön an alle, die bei der Recherche auch noch in Zukunft mitwirken werden.</p>
-    <p><strong>Hinweis zu den alten germanischen und slawischen Stämmen:</strong> Die Zusammenstellung der Stämme dient dem Verständnis der eigenen Wurzeln – sie ordnet die Familiennamen und Herkunftsorte in ihre tausendjährige Geschichte ein.</p>
-    <p><strong>Aktualisierung:</strong> Diese Datenbank wird regelmäßig aktualisiert, sobald mir neue Daten vorliegen.</p>
+    <p><strong>Zweckbestimmung:</strong> Ausschließlich für private Zwecke – zur Familien- und Ahnenforschung der Familie Rath-Tabbert. Diese Datenbank ist unverkäuflich und ausschließlich für die Familie bestimmt.</p>
+    <p><strong>Methode &amp; Veröffentlichung:</strong> Die App ist nach ARC(E)ANA aufgebaut – meiner ganz persönlichen Lernmethode, die ich für dieses Projekt entsprechend aufbereitet habe. Veröffentlicht ist die App in meinem persönlichen GitHub-Konto.</p>
+    <p><strong>Entstehung:</strong> Die Zusammenstellung der germanischen und slawischen Stämme sowie die Programmierung dieser App erfolgten mit Unterstützung künstlicher Intelligenz (KI).<br>
+    <em>Hinweis: KI kann Fehler machen. Deshalb sollte jede und jeder die Angaben eigenständig prüfen und mit weiteren Quellen abgleichen.</em></p>
+    <p><strong>Recherche – der größte Familienschatz:</strong> Die Grundlage meiner Familienforschung bildet ein ganz besonderer Fundus: das Familienstammbuch, das meine Schwester <strong>Sarina Rath</strong>, die als Standesbeamtin tätig ist, vor einigen Jahren mit viel Sorgfalt zusammengestellt hat. Sie hat für jeden ihrer Geschwister ein eigenes Buch angefertigt. Darin finden sich zahlreiche Geburts- und Registereinträge sowie Angaben zu unseren Großeltern, Eltern, Geschwistern und Kindern. Auch wenn nicht zu jeder Person sämtliche Geburts- und Sterbedaten vorliegen, ist dieses Buch eine wertvolle Grundlage, um familiäre Zusammenhänge und Verwandtschaftsverhältnisse nachzuvollziehen. Ein wirklich schöner und wertvoller Familienschatz, der auch unseren Kindern zugutekommt.</p>
+    <p><strong>Erinnerungen meiner Mutter:</strong> Eine weitere wichtige Quelle sind die persönlichen Erinnerungen meiner Mutter <strong>Friedel Rath, geborene Tabbert</strong>. In unseren Gesprächen und Telefonaten erzählt sie immer wieder aus ihrer Kindheit und von ihrer Familie. Manchmal fällt ihr etwas ein, das sie lange nicht erwähnt hat, und bei einem späteren Gespräch kommen weitere Erinnerungen hinzu. Besonders die Namen und Familiengeschichten der Geschwister ihres Vaters sind dadurch wieder lebendig geworden. Ich halte diese Erzählungen fest und ergänze damit nach und nach das Bild unserer Familiengeschichte.</p>
+    <p><strong>Urkunden &amp; Standesämter:</strong> Auch vorhandene Urkunden und standesamtliche Registerauszüge helfen dabei, einzelne Angaben zu überprüfen, Personen einander zuzuordnen und bisherige Erkenntnisse zu ergänzen. Dazu gehören unter anderem Unterlagen des <strong>Standesamtes Teterow</strong> und des früheren <strong>Standesamtes Kölzig</strong> (heute Kolsk, Polen), bei denen entsprechende Anfragen gestellt und Registerauszüge eingeholt wurden, soweit diese noch vorhanden waren.</p>
+    <p><strong>Ersatzstandesamt Berlin:</strong> Eine weitere wichtige Anlaufstelle ist das <strong>Standesamt II in Berlin (Ersatzstandesamt)</strong>. Dort befinden sich rund zwei Millionen historische Karteikarten und weitere überlieferte Unterlagen aus den ehemaligen preußischen Ostgebieten, darunter Schlesien und Ostpreußen, die heute überwiegend zu Polen gehören. Hierzu habe ich bereits einen Antrag gestellt und stehe weiterhin im Schriftverkehr, um möglicherweise noch vorhandene Einträge und Dokumente ausfindig zu machen. Besonders interessant sind dabei auch mögliche Überlieferungen aus alten Kirchenbüchern. Da viele historische Kirchenbücher inzwischen digitalisiert werden, eröffnen sich weitere Möglichkeiten, den Spuren unserer mütterlichen Familiengeschichte nachzugehen. Vielleicht lässt sich auf diesem Weg noch so mancher bisher unbekannte Eintrag entdecken.</p>
+    <p><strong>Stand der Recherche:</strong> Bislang beruht meine Recherche vor allem auf diesen familiären Überlieferungen und den mir zugänglichen Dokumenten. Eine Anmeldung bei externen Ahnenforschungs-Datenbanken ist bisher nicht erfolgt. Ich möchte mich zunächst mit den Möglichkeiten und den jeweiligen Datenschutzbedingungen vertraut machen.</p>
+    <p><strong>Besonderer Hinweis · Urkunden:</strong> Mir liegt eine Kopie der Sterbeurkunde meines Großvaters <strong>Wilhelm Tabbert</strong>, geboren am 26.01.1908 in Hitzdorf, vor. Solche Dokumente sind für die Ahnenforschung besonders wertvoll. Sie ermöglichen es, unterschiedliche Angaben miteinander abzugleichen und wichtige Lebensdaten wie Geburtsort, Sterbedatum und Lebensalter nachvollziehbar zusammenzuführen.</p>
+    <p><strong>Warum ich Ahnenforschung betreibe:</strong> <em>Wer seine Wurzeln nicht kennt, kann die Zukunft nicht gestalten.</em> Mich treibt die Frage an: Wer bin ich eigentlich, und woher komme ich? Über Jahrhunderte hinweg haben Kriege, wechselnde Herrschaftsverhältnisse, neue Grenzen und politische Umbrüche die Lebenswege der Menschen geprägt, Familien auseinandergerissen und ganze Bevölkerungsgruppen entwurzelt. Aus alten Stammesgebieten wurden Königreiche, Kaiserreiche und neue Staaten. Grenzen und Zugehörigkeiten veränderten sich – doch die Menschen und ihre Familiengeschichten blieben Teil dieser Geschichte. Mit meiner Ahnenforschung möchte ich diese Spuren wieder sichtbar machen, Zusammenhänge verstehen und ein Stück meiner familiären Identität zurückgewinnen. Denn wer seine Herkunft kennt, versteht auch besser, was ihn geprägt hat.</p>
+    <p><strong>Herzlichen Dank</strong> an alle, die bisher an dieser Familienforschung mitgewirkt haben – und ebenso an diejenigen, die mich auch in Zukunft mit ihren Erinnerungen, Dokumenten und Hinweisen unterstützen werden.</p>
+    <p><strong>Hinweis zu den alten germanischen und slawischen Stämmen:</strong> Die Zusammenstellung der Stämme dient dem besseren Verständnis unserer historischen Wurzeln. Sie soll Familiennamen und Herkunftsorte in einen größeren geschichtlichen Zusammenhang einordnen und einen Einblick in die tausendjährige Geschichte des alten Europas geben. Dabei handelt es sich um eine historische Orientierung, nicht um einen Nachweis einer direkten Abstammung von einem bestimmten Stamm.</p>
+    <p><strong>Aktualisierung:</strong> Diese Datenbank wird regelmäßig ergänzt und aktualisiert, sobald mir neue Informationen, Dokumente oder Erkenntnisse vorliegen.</p>
     <p><strong>Urheberrecht:</strong> © 2026 Katharina Schütz · Alle Rechte vorbehalten.</p>
-    <p><strong>Quellen-Basis:</strong> Tacitus (Germania, 98 n. Chr.) · Ptolemäus · Cäsar · Thietmar von Merseburg · Adam von Bremen · Helmold von Bosau · St. Galler Annalen · Digitales Familiennamenwörterbuch Deutschlands (namenforschung.net) · Standesamtliche Registerauszüge · Sterbeurkunde Wilhelm Tabbert (Nr. 137/1945) · Familien-Stammbuch (Zusammenstellung: Sarina Rath, Standesbeamtin).</p>
+    <p><strong>Quellen-Basis:</strong> Tacitus (Germania, 98 n. Chr.) · Ptolemäus · Cäsar · Thietmar von Merseburg · Adam von Bremen · Helmold von Bosau · St. Galler Annalen · Digitales Familiennamenwörterbuch Deutschlands (namenforschung.net) · Standesamtliche Registerauszüge · Sterbeurkunde Wilhelm Tabbert (Nr. 137/1945) · Familien-Stammbuch (Zusammenstellung: Sarina Rath, Standesbeamtin) · Gespräche mit Friedel Rath, geborene Tabbert · Standesamt II Berlin (Ersatzstandesamt).</p>
     <div style="text-align:right;margin-top:14px"><button class="flink" onclick="closeModal('impModal')">✕ Schließen</button></div>
   </div>
 </div>
@@ -244,7 +258,7 @@ footer{max-width:820px;margin:0 auto;padding:10px 10px 26px;text-align:center;co
   <div class="modal">
     <h3>Datenschutz</h3>
     <p><strong>1. Keine Datenerhebung:</strong> Diese App erhebt, überträgt oder verarbeitet <strong>keinerlei Daten</strong>. Kein Server, keine Cloud, keine Cookies, kein Tracking, keine Analyse-Tools.</p>
-    <p><strong>2. Vollständig offline:</strong> Alle Inhalte – alle 140 Personen, Stämme und Familiennamen – sind vollständig in dieser Datei enthalten und laufen offline auf deinem Gerät. Suchbegriffe bleiben nur im Arbeitsspeicher deines Geräts und werden nirgends gespeichert oder übertragen.</p>
+    <p><strong>2. Vollständig offline:</strong> Alle Inhalte – alle 162 Personen, Stämme und Familiennamen – sind vollständig in dieser Datei enthalten und laufen offline auf deinem Gerät. Suchbegriffe bleiben nur im Arbeitsspeicher deines Geräts und werden nirgends gespeichert oder übertragen.</p>
     <p><strong>3. Vorlesefunktion:</strong> Das Vorlesen nutzt ausschließlich die eingebaute Sprachausgabe deines Gerätes (z. B. iPhone). Dabei verlässt das Gerät diese Datei nicht – es wird kein Text an Dritte gesendet.</p>
     <p><strong>4. Familienangaben:</strong> Angaben zu Familienmitgliedern dienen ausschließlich der privaten Familien-Ahnenforschung. Sie werden nicht an Dritte weitergegeben, nicht verkauft und nicht online gestellt.</p>
     <p><strong>5. Rechtlicher Hinweis (DSGVO):</strong> Nach Art. 5 der Datenschutz-Grundverordnung (VO (EU) 2016/679) gelten die Grundsätze der Datenvermeidung und Datenminimierung. Da diese App als rein lokale, private Datei <strong>keine personenbezogenen Daten verarbeitet</strong>, sind die Pflichten der DSGVO nur eingeschränkt anwendbar. Ein Impressum mit Name und Anschrift wird gleichwohl nach § 5 DDG (Digitale-Dienste-Gesetz, vormals § 5 TKG) bereitgestellt.</p>
@@ -261,7 +275,7 @@ footer{max-width:820px;margin:0 auto;padding:10px 10px 26px;text-align:center;co
   <div class="cv-sec">Der Stammbaum der Familie Rath · die Familiennamen</div>
   <div class="cv-names">Knegendorf · Ziebarth · Kalkbrenner · Lindemann · Tabbert · Möller · <b>Rath</b> · Schütz · Zimmermann · Reimer · Buhl · Köhler</div>
   <div class="cv-open">👆 Antippen zum Öffnen</div>
-  <div class="cv-copy">© 2026 Katharina Schütz · Version 1.7</div>
+  <div class="cv-copy">© 2026 Katharina Schütz · Version 2.9</div>
  </div>
 </div>
 <script>
@@ -308,7 +322,7 @@ const T=[
 ["masowier","Masowier","Slawisch","ab 8./9. Jh.","Masowien, Raum Warschau","Kernstamm des mittelalterlichen Polens.","Polnische Chroniken"],
 ["milzener","Milzener","Slawisch","9.–11. Jh.","Oberlausitz, um Bautzen","Von Thietmar erwähnt; Ahnherren der heutigen Sorben.","Thietmar von Merseburg"],
 ["moritzer","Moritzer (Mürzitzer)","Slawisch","10.–12. Jh.","Müritz-Gebiet, Südmecklenburg","Kleiner Stamm südlich der Obodriten; früh unter deren Herrschaft.","Helmold von Bosau"],
-["obodriten","Obodriten (Abodriten)","Slawisch","8.–12. Jh.","Westmecklenburg: Wismar, Schwerin, Ratzeburg","Der mächtigste elbslawische Stamm; ihr Fürst Niklot ist Stammvater der Mecklenburger Dynastie, die bis 1918 regierte. Ein Großteil deines Heimatlandes war Obodriten-Land.","Helmold; Adam von Bremen"],
+["abodriten","Abodriten (Obodriten)","Slawisch","8.–12. Jh.","Westmecklenburg: Wismar, Schwerin, Ratzeburg – Kernland auch um Zarrentin (slawisch Zarnethin)","Der mächtigste elbslawische Stamm; ihr Fürst Niklot ist Stammvater der Mecklenburger Dynastie, die bis 1918 regierte. Sie gaben Mecklenburg den Namen – der Großteil deines Heimatlandes war Abodriten-Land, auch Zarrentin, wo dein Großvater Karl Martin geboren wurde.","Helmold; Adam von Bremen"],
 ["polanen","Polanen","Slawisch","9.–12. Jh.","Großpolen, Posen, Gnesen","Namensgeber der Polen („Feldbewohner“); ihre Piasten-Dynastie einigte Polen ab 960 – die Provinz Posen deiner Ziebarth-Linie war ihr Kernland.","Gallus Anonymus"],
 ["pomoranen","Pomoranen","Slawisch","10.–12. Jh.","Vorpommern & polnisches Pommern: Stettin, Kolberg, Danzig","Namensgeber Pommerns („am Meer“); das Greifen-Geschlecht regierte bis 1637.","Gallus Anonymus"],
 ["pruessen","Prußen (Alte Preußen)","Balten","bis 1283 n. Chr.","Ostpreußen, Kaliningrad, Memelland","Balten, keine Slawen; heidnisch bis zur Eroberung durch den Deutschen Orden; gaben dem späteren Staat Preußen den Namen.","Peter von Dusburg"],
@@ -326,7 +340,7 @@ const T=[
 ["sugambrer","Sugambrer","Germanisch","1. Jh. v. Chr.–4. Jh. n. Chr.","Ruhr, Sieg, Sauerland, Bergisches Land","Furchteinflößende frühe Gegner Roms; verschmolzen später mit den Franken.","Cäsar; Tacitus"],
 ["tenkterer","Tenkterer","Germanisch","1. Jh. v. Chr.–1. Jh. n. Chr.","Rechtsrheinisches Mittelrheingebiet, Neuwied","Von Cäsar 55 v. Chr. bekämpft und weitgehend vernichtet.","Cäsar"],
 ["teutonen","Teutonen","Germanisch","2.–1. Jh. v. Chr.","Jütland → Mitteleuropa","Mit den Kimbern auf Wanderschaft; 102 v. Chr. von Marius vernichtet – „teutonische Wut“.","Plutarch"],
-["thueringer","Thüringer","Germanisch","3./4.–6. Jh. n. Chr.","Thüringen, Harz, Saale-Unstrut-Gebiet","Hervorgegangen aus den Hermunduren. Errichteten um 400 ein eigenes Königreich, das 531 von Franken und Sachsen zerschlagen wurde. Der einzige germanische Stamm, dessen Name als Bundesland überlebt hat – das Land deines Schwiegervaters Kurt Schütz!","Tacitus; Prokop; Gregor von Tours"],
+["thueringer","Thüringer","Germanisch","3./4.–6. Jh. n. Chr.","Thüringen, Harz, Saale-Unstrut-Gebiet","Hervorgegangen aus den Hermunduren. Errichteten um 400 ein eigenes Königreich, das 531 von Franken und Sachsen zerschlagen wurde. Einer von vier germanischen Stämmen, deren Namen als Bundesland überlebt haben (neben Sachsen, Hessen aus den Chatten und Bayern aus den Bajuwaren) – das Land deines Schwiegervaters Kurt Schütz!","Tacitus; Prokop; Gregor von Tours"],
 ["tollenser","Tollenser","Slawisch","10.–12. Jh.","Tollenseetal, Plau, Lübz, Mecklenburgische Seenplatte","Liutizen-Teilstamm – dein Mecklenburg war Liutizen-Land.","Thietmar"],
 ["tschechen","Tschechen","Slawisch","ab 6. Jh.","Böhmen (Tschechien)","Kamen im 6. Jh. nach Böhmen – auf den Boden der keltischen Boier und germanischen Markomannen.","Cosmas von Prag"],
 ["ubier","Ubier","Germanisch","1. Jh. v. Chr.–3. Jh. n. Chr.","Köln, Düsseldorf, Raum Ahr","Wurden 38 v. Chr. von Rom auf das linksrheinische Ufer umgesiedelt; ihr Oppidum Ubiorum wurde Köln. Hilden, die Heimat der Buhls, lag im Ubier-Land!","Tacitus; Strabon"],
@@ -376,8 +390,8 @@ function selectTribe(id){const t=null;const entry=T.filter(function(x){return x[
  go("tribedetail")}
 /* ============ NAMEN (alphabetisch) ============ */
 const NAMEN=[
-["Knegendorf","sehr selten (Norddeutschland)","Herkunftsname nach dem Dorf Knegendorf bei Ribnitz-Damgarten in Mecklenburg (Landkreis Rostock): „der aus Knegendorf“ – und wieder im Zirzipanen-Land!","Extrem selten – ein Schatz für die Familienforschung: eindeutig nach Mecklenburg verweisend. Frieda Lisette Dorothea Möller geb. Knegendorf.","Ortslexikon Mecklenburg"],
-["Kalkbrenner","selten (vereinzelt, Nord- und Ostdeutschland)","Berufsname: der Kalkbrenner – er brannte in Kalköfen Kalkstein zu Branntkalk, den wichtigsten Baustoff für Mörtel. Ohne ihn kein Kirchturm und kein Steinfundament! Ein ehrlicher Handwerksname.","Vereinzelt verbreitet. Deine Kalkbrenner: Friedrich Kalkbrenner (Urgroßvater mütterlicherseits, Provinz Posen) und seine Tochter Marie-Sophie Tabbert geb. Kalkbrenner (Großmutter mütterlicherseits).","DFD namenforschung.net"],
+["Knegendorf","sehr selten (Norddeutschland)","Herkunftsname nach dem Dorf Knegendorf bei Ribnitz-Damgarten in Mecklenburg (Landkreis Rostock): „der aus Knegendorf“ – und wieder im Zirzipanen-Land!","Extrem selten – ein Schatz für die Familienforschung: eindeutig nach Mecklenburg verweisend. Frieda Lisette Dorothea Möller geb. Knegendorf. Hinweis: Zwei Dörfer tragen den Namen – bei Ribnitz-Damgarten und als Weiler bei Laage (der Recknitzstadt, LK Rostock). Beide liegen an der Recknitz, der Westgrenze des Zirzipanen-Landes.","Ortslexikon Mecklenburg"],
+["Kalkbrenner","selten (vereinzelt, Nord- und Ostdeutschland)","Berufsname: der Kalkbrenner – er brannte in Kalköfen Kalkstein zu Branntkalk, den wichtigsten Baustoff für Mörtel. Ohne ihn kein Kirchturm und kein Steinfundament! Ein ehrlicher Handwerksname.","Vereinzelt verbreitet. Deine Kalkbrenner: Friedrich Kalkbrenner (Urgroßvater mütterlicherseits, Provinz Posen/Neumark – Gegend um Posen, Arnswalde und Marienwalde, heute alles Polen) und seine Tochter Marie-Sophie Tabbert geb. Kalkbrenner (Großmutter mütterlicherseits).","DFD namenforschung.net"],
 ["Tabbert","selten (v. a. Norddeutschland)","Niederdeutsch-friesische Kurzform des germanischen Rufnamens Tjadbert/Tiedbert (Theudebert) – „der im Volk Glänzende“.","Typisch norddeutscher Name – passt zur Kölzig/Neumark-Linie (Wilhelm Tabbert geb. in Arnswalde).","Forebears; Stark"],
 ["Ziebarth","597 · Rang 5.939","Patronym zum germanischen Rufnamen Ziebart aus Siegbert – „Sieg“ und „glänzend“: „Sohn des Siegbert“. Ein altgermanischer Fürstenname! Erste Belege: 1153 Sibertus de Frankenburg, 1219 Johan Sieberth von Ravensburg.","Selten; Deutschland und Polen (43 Nennungen 2002 – passt zur Provinz Posen). Die Linie aus Rogasen auf dem Sandberg: Martha, Hugo und Hulda.","DFD namenforschung.net"],
 ["Buhl","2.545 · Rang 1.136","Zwei Deutungen: 1. Übername zu mhd. buole „nahe(r Verwandter), Geliebte(r)“ – der Liebste. 2. Wohnstättenname zu Bühl „Hügel, Anhöhe“ – der vom Hügel (Beleg 1559 „uffem Buel“).","Süd- und Mitteldeutschland – die Linie von Werner Kurt Buhl aus Hilden bei Düsseldorf.","DFD; Geneanet"],
@@ -407,6 +421,34 @@ function selectName(i){var n=NAMEN[i];if(!n)return;
   "<div class='field'><div class='fl'>🔊 Vorlesen (Lernkarte)</div><div class='fv'><button class='btn' onclick=\"speakName("+i+")\">Karte vorlesen</button> <button class='btn red' onclick=\"stopSpeak()\">⏹ Stoppen</button></div></div>"+
   "<div class='backrow'><button class='btn red' onclick=\"go('namen')\">📖 Zurück zum Lexikon</button></div></div>";
  go("namendetail")}
+/* ============ RÖMER-ZEITLEISTE (interaktiv) ============ */
+const TLDATA=[
+["58–51 v. Chr.","Cäsar erobert Gallien","Gaius Iulius Cäsar, Feldherr und später Diktator.","Zwei Generationen bevor Augustus Kaiser wird, erobert Cäsar in acht Jahren Gallien – das heutige Frankreich – und rückt damit erstmals an den Rhein. Germanische Stämme wie die Usipeter und Tenkterer, die über den Rhein vor den Römern flüchten, werden von Cäsars Reitern 55 v. Chr. am Niederrhein gestellt und vernichtet. Für deine Vorfahren östlich des Rheins beginnt hier die Berührung mit der Weltmacht Rom – als Nachbarn, nicht als Untertanen."],
+["12–9 v. Chr.","Drusus’ Feldzüge","Kaiser Augustus, der erste Kaiser.","Drusus, der Stiefsohn des Augustus, führt die römischen Legionen über den Rhein bis an die Elbe – weiter als je zuvor. In Mogontiacum (Mainz) und an der Lippe entstehen römische Lager. Damit rückt Rom bis in den Westen des Gebiets, das später dein Heimatland werden sollte. Drusus stirbt 9 v. Chr. nach einem Sturz vom Pferd; sein Bruder Tiberius setzt die Vorstöße noch einige Jahre fort."],
+["9 n. Chr.","Die Varusschlacht","Kaiser Augustus – sein Adoptivsohn Tiberius wird 14 n. Chr. sein Nachfolger.","Der Cheruskerfürst Arminius, römisch ausgebildeter Offizier, lockt drei Legionen unter Publius Quinctilius Varus in einen Hinterhalt – vermutlich bei Kalkriese am Wiehengebirge. Rund 15.000 römische Soldaten fallen; Augustus soll monatelang gerufen haben: „Varus, gib mir meine Legionen zurück!“ Rom zieht sich hinter den Rhein zurück. Germanien bleibt frei – die Römer haben dein Heimatgebiet nie erobert."],
+["14–16 n. Chr.","Germanicus’ Rache-Feldzüge","Kaiser Tiberius, müde und misstrauisch geworden.","Germanicus, Tiberius’ populärer Neffe, durchzieht mit acht Legionen das Land der Marsen, Brukterer und Chatten – im heutigen Nordrhein-Westfalen. Er findet das Schlachtfeld der Varusschlacht und bestattet die Gefallenen. Doch die Siege bringen nichts Dauerhaftes: Tiberius ruft ihn 16 n. Chr. zurück. Rom gibt Germanien endgültig auf – der Rhein wird für Jahrhunderte die Grenze bleiben."],
+["ab 83–85 n. Chr.","Der Limes","Kaiser Domitian; die „Germania“ des Tacitus entsteht 98 n. Chr. unter Nerva und Trajan.","Der Limes – eine über 500 Kilometer lange Grenzbefestigung mit Wachtürmen, Kastellen und Palisaden – sichert das Gebiet zwischen Rhein und Donau. Köln, Xanten, Mainz und Trier blühen als römische Städte. Aber alles östlich davon – Mecklenburg, Brandenburg, Posen, Schlesien – bleibt freies germanisches Land. Der Historiker Tacitus schreibt um 98 n. Chr. seine „Germania“, unsere wichtigste Quelle über die Stämme deiner Heimat."],
+["166–180 n. Chr.","Die Markomannenkriege","Kaiser Marc Aurel, der Philosoph auf dem Thron – er schreibt seine „Selbstbetrachtungen“ im Feldlager.","Germanische und sarmatische Völker brechen an der Donaugrenze ein – Markomannen, Quaden, Jazygen. Marc Aurel verbringt den Großteil seiner restlichen Regierung im Feldlager, kämpft Verteidigungskriege ums Überleben des Reiches. Es ist die größte Krise Roms seit Bürgerkriegszeiten. Die Kriege zeigen: Der Druck der Völkerwanderung beginnt. Erst sein Tod 180 n. Chr. beendet die Kämpfe."],
+["ca. 260 n. Chr.","Der Limesfall","Kaiser Gallienus – die Zeit der Soldatenkaiser mit über 20 Herrschern in 50 Jahren.","Alamannen und Franken durchbrechen den Limes, die Römer räumen das Gebiet östlich des Rheins. Germanische Gruppen wandern ein, römische Städte östlich des Rheins werden aufgegeben. Die Völkerwanderung beginnt allmählich: Germanische Stämme suchen neues Land im Reich, zunächst als Söldner und Verbündete, später als Eroberer. Burgunder, Wandalen, Goten – ihre Namen wirst du später in der Stämme-Liste finden."],
+["476 n. Chr.","Westrom fällt","niemand mehr – Odoaker entthront den Knabenkaiser Romulus Augustulus.","Der germanische Heerführer Odoaker schickt die kaiserlichen Abzeichen nach Konstantinopel: Es gibt keinen Kaiser des Westens mehr. Italien wird ein germanisches Königreich. Im Osten lebt das Reich als Ostrom (Byzanz) weiter. Wichtig für dich: Als vier Generationen später die Slawen nach Mecklenburg einwandern, existiert das antike Rom schon lange nicht mehr. Zirzipanen und Abodriten haben also nie gegen „die Römer“ gekämpft – ihre Gegner waren später die Franken und Sachsen."],
+["6./7. Jh. n. Chr.","Die Slawen rücken ein","Kaiser Herakleios, der gegen die Perser kämpft.","Im Zuge der slawischen Wanderung besiedeln slawische Gruppen das Land zwischen Elbe und Oder, das nach dem Abzug der germanischen Stämme dünn besiedelt war. In Mecklenburg entstehen die Stämme der Abodriten und Zirzipanen, an der unteren Elbe und in der Lausitz die Wilzen und Lutizen. Sie bauen Burgen wie die Mecklenburg („große Burg“) – die Abodriten geben dem Land seinen Namen, der bis heute gilt."],
+["789–804 n. Chr.","Karl der Große und die Abodriten","Karl der Große – seit Weihnachten 800 „Kaiser der Römer“ in der Peterskirche.","Karl der Große unterwirft die Sachsen in jahrzehntelangen Kriegen. Die Abodriten unter ihrem Fürsten Thrasco werden seine Verbündeten gegen die Sachsen – ein Bündnis, das den Abodriten ihre Herrschaft sichert. Gegen die Wilzen im Osten führt Karl 789 selbst einen großen Feldzug. Die Slawenstämme östlich der Elbe bleiben aber unabhängig. Richtig brenzlig wird es für Abodriten und Zirzipanen erst unter den Nachfolgarn: mit den Sachsenherzögen, den Ottonen und dem Wendenkreuzzug."],
+["983 n. Chr.","Der große Slawenaufstand","Kaiser Otto II. – er stirbt ausgerechnet in diesem Jahr mit 28 Jahren in Rom.","Nach dem Tod Ottos II. erheben sich die slawischen Stämme zwischen Elbe und Oder – Lutizen, Abodriten und Zirzipanen gemeinsam – und werfen die deutsche Herrschaft östlich der Elbe ab. Klöster und Bistümer werden zerstört, die Grenze des Reiches fällt auf die Elbe zurück. Fast 200 Jahre lang bleibt das Land der Zirzipanen um Teterow und Neu Wokern slawisch und unabhängig – deine ältesten Familiennamen-Orte liegen in dieser Zeit im freien Zirzipanen-Land."],
+["1147–1168 n. Chr.","Wendenkreuzzug und Fall von Arkona","Papst Eugen III. – er ruft 1145/47 zum Kreuzzug auch gegen die heidnischen Slawen („Wenden“) auf.","König Konrad III. und sächsische Herzöge führen den Wendenkreuzzug – der Slawenaufstand des 12. Jahrhunderts endet mit der Eroberung. Der Abodritenfürst Niklot, Stammvater der Mecklenburger Dynastie, fällt 1160; sein Sohn Pribislaw wird 1167 als Lehnsmann Heinrichs des Löwen Mecklenburgs erster Fürst. 1168 erobert der dänische König Waldemar I. die Tempelburg Arkona auf Rügen – das heidnische Slawenland tritt ins christliche Europa ein. Die Wendenkreuzzugs-Zeit ist das eigentliche „Endkapitel“ der freien Slawenstämme – nicht die Römerzeit."]
+];
+function showEra(i){var e=TLDATA[i];if(!e)return;
+ document.getElementById("erapanel").innerHTML=
+  "<div class=\"card\" style=\"max-width:720px;margin:0 auto;padding:22px\">"+
+  "<div class=\"sub\" style=\"margin-bottom:8px\">🦅 Römer-Zeitleiste · Epoche "+(i+1)+" von "+TLDATA.length+"</div>"+
+  "<h3>"+e[1]+"</h3>"+
+  "<div class=\"field\"><div class=\"fl\">📅 Zeit</div><div class=\"fv\"><b>"+e[0]+"</b></div></div>"+
+  "<div class=\"field\"><div class=\"fl\">🏛️ Wer hat in Rom das Sagen?</div><div class=\"fv\">"+e[2]+"</div></div>"+
+  "<div class=\"field\"><div class=\"fl\">📜 Mehr darüber</div><div class=\"fv\" style=\"line-height:1.6\">"+e[3]+"</div></div>"+
+  "<div class=\"field\"><div class=\"fl\">🔊 Vorlesen (Lernkarte)</div><div class=\"fv\"><button class=\"btn\" onclick=\"speakEra("+i+")\">Epoche vorlesen</button> <button class=\"btn red\" onclick=\"stopSpeak()\">⏹ Stoppen</button></div></div>"+
+  "<div class=\"backrow\"><button class=\"btn red\" onclick=\"go('roemer')\">🦅 Zurück zur Zeitleiste</button></div></div>";
+ go("eradetail")}
+function speakEra(i){var e=TLDATA[i];if(!e)return;
+ speak(e[1]+". Zeit: "+e[0]+". "+e[2]+" "+e[3])}
 /* ---- Vorlesefunktion ---- */
 function bestVoice(){
  try{var vs=window.speechSynthesis.getVoices().filter(function(v){return (v.lang||"").indexOf("de")===0});
@@ -431,14 +473,14 @@ function speakTribe(id){var e=T.filter(function(x){return x[0]===id})[0];if(!e)r
 try{if(window.speechSynthesis){speechSynthesis.getVoices();speechSynthesis.onvoiceschanged=function(){speechSynthesis.getVoices()}}}catch(e){}
 /* ============ AHNEN ============ */
 const SEED=[
-["AdamZiebarth","Adam","Ziebarth","","m","10.02.2000","","Tübingen","Sohn von Frank und Zusanne Ziebarth",null,"FrankZiebarth","ZusanneZiebarth"],
+["AdamZiebarth","Adam","Ziebarth","","m","10.02.2000","","Tübingen","Sohn von Frank und Susanne Ziebarth",null,"FrankZiebarth","SusanneZiebarth"],
 ["AdrianZiebarth","Adrian","Ziebarth","","m","26.07.2011","","","Sohn von Volker und Natalia Ziebarth",null,"VolkerZiebarth","NataliaZiebarth"],
 ["alaistair","Alaistair Meinhard","Zimmermann","","m","25.05.2020","","Potsdam","Enkel von Katharina",null,"steven","nathalie"],
 ["AlinaZiebarth","Alina","Ziebarth","","w","04.01.2009","","","Tochter von Volker und Natalia Ziebarth",null,"VolkerZiebarth","NataliaZiebarth"],
 ["andreaZimmermann","Andrea","Zimmermann","geb. Rüdiger","w","17.09.1960","","","Mutter von Steven und Julia",[["detlef","ehe","",""],["RuedigerSpiet","lieb","",""]]],
 ["andreas","Andreas Jörg","Schütz","","m","16.06.1960","08.04.2023","Caputh (heute Schwielowsee)","Ehemann von Katharina · geb. Registernummer 198/1960 · ✝ Sterberegister S911/2023",[["katharina","ehe","05.05.1984",""]],"schuetzVater","schuetzMutter"],
 ["andreasT","Andreas","Tabbert","","m","16.11.1961","","","Cousin mütterlicherseits – ältestes Kind von Jürgen · Heirat 11.07.2005",[["janaK","ehe","11.07.2005",""]],"juergen","waltraud"],
-["AndrewZiebarth","Andrew","Ziebarth","","m","30.12.2004","","Tübingen","Sohn von Frank und Zusanne Ziebarth",null,"FrankZiebarth","ZusanneZiebarth"],
+["AndrewZiebarth","Andrew","Ziebarth","","m","30.12.2004","","Tübingen","Sohn von Frank und Susanne Ziebarth",null,"FrankZiebarth","SusanneZiebarth"],
 ["anita","Anita Editha","Herter","geb. Tabbert","w","16.08.1934","","","Tante – Schwester der Mutter",[["hannes","ehe","Februar 1965",""]],"wilhelm","marie"],
 ["anitaWalk","Anita","Walk","","w","unbekannt","","","Nichte von Katharina – Tochter von Schwägerin Marion (Schwester von Andreas)",null,"BerndWalk","marionHauff"],
 ["anja","Anja","Rath","geb. Stickel","w","21.07.1975","","","1. Ehefrau von Neffen Steffen",[["steffen","ehe","",""]]],
@@ -448,7 +490,7 @@ const SEED=[
 ["AriHenryKoehler","Ari Henry","Köhler","","m","08.12.2022","","","Enkelkind von Karin",null,null,"TanjaAnnikaKoehler"],
 ["armin","Armin","Buhl","","m","04.09.1957","05.09.1957","","Cousin von Katharina – nur einen Tag alt geworden",null,"wernerKurt","annemarieB"],
 ["august","August Wilhelm","Tabbert","","m","unbekannt","","Kölzig","Urgroßvater mütterlicherseits",[["ernestine","ehe","",""]]],
-["beatrix","Beatrix","Tabbert","","w","unbekannt","","","Cousine mütterlicherseits – jüngstes Kind von Jürgen",null,"juergen","waltraud"],
+["beatrix","Beatrix","Heinisch","geb. Tabbert","w","10.01.1970","","","Cousine mütterlicherseits – Tochter von Jürgen und Waltraud, verheiratet mit Dirk Heinisch",[["dirkHeinisch","ehe","21.09.1990",""]],"juergen","waltraud"],
 ["BerndWalk","Bernd","Walk","","m","unbekannt","","","1. Ehemann von Marion Hauff (geborene Schütz)",[["marionHauff","ehe","",""]]],
 ["cecilia","Cecilia","Rath","","w","03.12.2019","","","Großnichte von Katharina – Tochter von Robin",null,"robin",null],
 ["christian","Christian","Schütz","","m","unbekannt","sehr früh verstorben (Daten folgen)","","Sohn von Michael – sehr früh verstorben",null,"michaelSchuetz","monikaS"],
@@ -457,29 +499,31 @@ const SEED=[
 ["ClaudiaSchnepp","Claudia","Schnepp","geb. Schütz","w","unbekannt","","","Nichte von Andreas – Tochter von Michael · verheiratete Schnepp",null,"michaelSchuetz","monikaS"],
 ["daniela","Daniela","Rath","geb. Wahle","w","01.10.1975","","","Ehefrau von Neffen Michael",[["michaelRath","ehe","",""]]],
 ["detlef","Detlef","Zimmermann","","m","13.11.1954","27.04.2023","","Ehemann von Andrea – Vater von Julia · Adoptivvater von Steven",[["andreaZimmermann","ehe","",""]]],
-["DieterWirth","Dieter","Wirth","","m","unbekannt","","","Halbcousin von Katharina – Sohn von Eva Wirth",null,null,"EvaWirth"],
+["erichWirth","Erich","Wirth","","m","09.05.1909 (eventuell)","","","Ehemann von Eva Wirth geb. Ziebarth – Vater von Dieter und Ingrid",[["EvaWirth","ehe","",""]]],
+["DieterWirth","Dieter Klaus Erich","Wirth","","m","19.05.1939","","Berlin","Halbcousin von Katharina – Sohn von Eva und Erich Wirth · Maurermeister",[["charlotteWirth","ehe","",""]],"erichWirth","EvaWirth"],
+["charlotteWirth","Charlotte","Wirth","","w","unbekannt","","","Ehefrau von Dieter Wirth",null,null,null],
 ["dorotheaR","Dorothea","Rath","","w","23.12.2004","","","Großnichte – Tochter von Stefanie, Zwilling",null,"MatthisNeumannRath","stefanie"],
 ["DorotheaZiebarth","Dorothea","Ziebarth","","w","unbekannt","","","zweite Tochter von Martha Ziebarth",null,null,"MarthaZiebarth"],
 ["eleanor","Eleanor Elva Andrea","Zimmermann","","w","18.02.2017","","Potsdam","Enkelin von Katharina",null,"steven","nathalie"],
-["elisabeth","Elisabeth","O'Neill","geb. Wegner","w","unbekannt","ca. 2000 (Datum folgt)","Texas 🤠","Halbtante – ging nach Texas",null,"ottoW","hulda"],
+["elisabeth","Elisabeth","O'Neal","geb. Wegner","w","unbekannt","ca. 2000 (Datum folgt)","Texas 🤠","Halbtante – heiratete den Amerikaner Nolan O'Neal (irische Herkunft) und ging mit ihm nach Texas",[["nolanOneal","ehe","",""]],"ottoW","hulda"],
 ["elisabethR","Elisabeth","Rath","","w","23.12.2004","","","Großnichte – Tochter von Stefanie, Zwilling",null,"MatthisNeumannRath","stefanie"],
 ["elseK","Else","Karwinkel","geb. Tabbert","w","unbekannt","","","Großtante – Schwester von Wilhelm Tabbert",null,"august","ernestine"],
 ["elseM","Else","Möller","","w","18.03.1904","19.04.1939","","Urgroßtante – Schwester von Urgroßvater Johann Möller · Tante der Großmutter Hedwig",null],
-["EmelieZiebarth","Emelie","Ziebarth","","w","18.04.1998","","Altensteig","Tochter von Frank und Zusanne Ziebarth",null,"FrankZiebarth","SusanneZiebarth"],
+["EmelieZiebarth","Emelie","Ziebarth","","w","18.04.1998","","Altensteig","Tochter von Frank und Susanne Ziebarth",null,"FrankZiebarth","SusanneZiebarth"],
 ["EmmiTanjaKoehler","Emmi Tanja","Köhler","","w","19.09.2021","","","Enkelkind von Karin",null,null,"JaninaChristinaKoehler"],
 ["ernestine","Ernestine Wilhelmine","Tabbert","geb. Lindemann","w","25.12.1867 (eventuell)","","Kölzig","Urgroßmutter mütterlicherseits",[["august","ehe","",""]]],
-["EvaWirth","Eva","Wirth","geb. Ziebarth","w","unbekannt","","","Halbtante – Huldas älteste Tochter, vor der 1. Ehe geboren",null,null,"hulda"],
-["FrankZiebarth","Frank","Ziebarth","","m","18.10.1970","","Eberswalde","1. Sohn von Hans-Joachim und Christiane Ziebarth",[["ZusanneZiebarth","ehe","",""]],"HansJoachimZiebarth","ChristianeCarolaZiebarth"],
+["EvaWirth","Eva","Wirth","geb. Ziebarth","w","07.08.1908","Juni 1993","Berlin","Halbtante – Huldas älteste Tochter, vor der 1. Ehe geboren – verheiratet mit Erich Wirth",[["erichWirth","ehe","",""]],null,"hulda"],
+["FrankZiebarth","Frank","Ziebarth","","m","18.10.1970","","Eberswalde","1. Sohn von Hans-Joachim und Christiane Ziebarth",[["SusanneZiebarth","ehe","",""]],"HansJoachimZiebarth","ChristianeCarolaZiebarth"],
 ["friedaG","Frieda","Gehlhar","geb. Tabbert","w","unbekannt","","","Großtante – Schwester von Wilhelm Tabbert",null,"august","ernestine"],
 ["friedaM","Frieda Lisette Dorothea","Möller","geb. Knegendorf","w","16.10.1873","22.12.1943","","Urgroßmutter väterlicherseits",[["johannM","ehe","",""]]],
 ["friedel","Friedel Annemarie","Rath","geb. Tabbert","w","05.02.1931","","Kölzig (heute Kolsk, Polen)","Mutter von Katharina",[["karlheinz","ehe","30.09.1955",""]],"wilhelm","marie"],
-["FriedelZiebarth","Friedel","Ziebarth","","w","06.02.1903","29.04.1975","","älteste Tochter von Martha Ziebarth – nicht verheiratet, liiert mit einem von Otto",[["vonOtto","lieb","",""]],"MarthaZiebarth",null],
+["FriedelZiebarth","Friedel","Ziebarth","","w","06.02.1903","29.04.1975","","älteste Tochter von Martha Ziebarth – nicht verheiratet",null,"MarthaZiebarth",null],
 ["friedrichK","Friedrich","Kalkbrenner","","m","unbekannt","","","1. Ehemann von Hulda · Urgroßvater mütterlicherseits",[["hulda","ehe","",""]]],
 ["hannaZ","Hannah","Zimmermann","","w","24.03.2021","","","Tochter von Julia – Stevens Nichte",null,null,"julia"],
 ["hannes","Hans Joachim Wilhelm","Herter","","m","19.11.1943","","","Ehemann von Tante Anita – Heirat Februar 1965",[["anita","ehe","Februar 1965",""]]],
-["HansJoachimZiebarth","Hans-Joachim","Ziebarth","","m","29.04.1943","","Woldenberg (Provinz Posen)","Sohn von Friedel Ziebarth",[["ChristianeCarolaZiebarth","ehe","",""]],"vonOtto","FriedelZiebarth"],
+["HansJoachimZiebarth","Hans-Joachim","Ziebarth","","m","29.04.1943","","Woldenberg (Provinz Posen)","Sohn von Friedel Ziebarth",[["ChristianeCarolaZiebarth","ehe","",""]],null,"FriedelZiebarth"],
 ["Hauff","","Hauff","","m","unbekannt","","","2. Ehemann von Marion – Vorname folgt",[["marionHauff","ehe","",""]]],
-["hedwig","Hedwig Johanna Frieda","Rath","geb. Möller","w","29.02.1912","05.02.2013 (fast 101)","Neu Wokern","Großmutter väterlicherseits – wurde 100",[["karlMartin","ehe","18.12.1931",""]],"johannM","friedaM"],
+["hedwig","Hedwig Johanna Frieda","Rath","geb. Möller","w","29.02.1912","05.02.2013 (fast 101)","Neu Wokern","Großmutter väterlicherseits – wurde fast 101 · Geburtenregister Neu Wokern Nr. 10",[["karlMartin","ehe","18.12.1931",""]],"johannM","friedaM"],
 ["HeinoGuetschow","Heino","Gütschow","","m","unbekannt","","","Ehemann von Renate Gütschow",[["RenateGuetschow","ehe","",""]]],
 ["HelgaHageboeck","Helga","Hageböck","geb. Wegner","w","unbekannt","","","Halbtante – aus Huldas 2. Ehe",[["RichardHageboeck","ehe","",""]],"ottoW","hulda"],
 ["HerthaKlinkbeil","Hertha","Klinkbeil","geb. Ziebarth","w","unbekannt","","","Tante Hertha – dritte Tochter von Martha Ziebarth, verheiratete Klinkbeil",null,null,"MarthaZiebarth"],
@@ -487,7 +531,7 @@ const SEED=[
 ["hulda","Hulda","Kalkbrenner","geb. Ziebarth","w","um 1886 (ungesichert)","","Rogasen (Königreich Preußen / Provinz Posen, bis 1920 · heute Polen) – auf dem Sandberg","Urgroßmutter mütterlicherseits",[["friedrichK","ehe","",""],["ottoW","ehe","",""]]],
 ["idaM","Ida","Möller","","w","unbekannt","","","Großtante – Schwester von Großmutter Hedwig",null,"johannM","friedaM"],
 ["ingmar","Ingmar","Wist","","m","23.12.1969","","","2. Ehemann von Sarina",[["sarina","ehe","",""]]],
-["IngridBalow","Ingrid","Balow","geb. Wirth","w","unbekannt","","","Halbcousine von Katharina – Tochter von Eva Wirth",null,null,"EvaWirth"],
+["IngridBahlo","Ingrid","Bahlo","geb. Wirth","w","06.04.1936","26.06.2014","","Halbcousine von Katharina – Tochter von Eva und Erich Wirth",null,"erichWirth","EvaWirth"],
 ["janaK","Jana","Tabbert","geb. Krumrich","w","15.08.1969","","","Ehefrau von Cousin Andreas",[["andreasT","ehe","11.07.2005",""]]],
 ["JaninaChristinaKoehler","Janina Christina","Köhler","","w","01.06.1995","","","Nichte 2. Grades von Katharina – Tochter von Karin",null,null,"karin"],
 ["jannis","Jannis","Rath","","m","13.03.2009","","","Großneffe – Sohn von Steffen und Anja",null,"steffen","anja"],
@@ -497,10 +541,10 @@ const SEED=[
 ["fitzner","Jörg Ulrich","Pfitzner","","m","08.04.1962","","","Partner von Simone – Vater von Lisa",[["simone","lieb","",""]]],
 ["judith","Judith","Rath","geb. Schmalz","w","07.08.1979","","","Ehefrau von Neffen Peer",[["peer","ehe","",""]]],
 ["julia","Julia","Zimmermann","","w","21.12.1987","","","Schwester von Steven – Tochter von Andrea und Detlef",null,"detlef","andreaZimmermann"],
-["juergen","Jürgen","Tabbert","","m","02.09.1939","","","Onkel – Bruder der Mutter (geb. als der Krieg begann)",[["waltraud","ehe","",""]],"wilhelm","marie"],
+["juergen","Jürgen Wilhelm","Tabbert","","m","08.09.1939","23.12.2016","","Onkel – Bruder der Mutter (geb. als der Krieg begann)",[["waltraud","ehe","06.10.1961",""]],"wilhelm","marie"],
 ["JuergenWegner","Jürgen","Wegner","","m","unbekannt","","","Sohn von Renate – aus ihrer ersten Ehe",null,null,"RenateGuetschow"],
 ["karin","Karin Elke","Köhler","geb. Buhl","w","29.03.1961","","","Cousine von Katharina – Tochter von Tante Annemarie",null,"wernerKurt","annemarieB"],
-["karlMartin","Karl Martin Heinrich Friedrich","Rath","","m","23.09.1904","","","Großvater väterlicherseits",[["hedwig","ehe","18.12.1931",""]]],
+["karlMartin","Karl Martin Heinrich Friedrich","Rath","","m","23.09.1904","","Zarrentin","Großvater väterlicherseits · geboren in Zarrentin (Geburtsregister Nr. 59) · Aufgebot zur Hochzeit: Nr. 11 · Zarrentin am Schaalsee (slawisch Zarnethin, „Ort des Schwarzen“) lag im Kernland der Abodriten – des Stammes, der Mecklenburg den Namen gab",[["hedwig","ehe","18.12.1931","Aufgebot Nr. 11"]]],
 ["karlheinz","Karl-Heinz Erich Friedrich","Rath","","m","04.10.1932","25.06.2001","Teterow / Potsdam","Vater von Katharina · Heirat 30.09.1955 in Jördensdorf",[["friedel","ehe","30.09.1955",""]],"karlMartin","hedwig"],
 ["katharina","Katharina Andrea","Schütz","geb. Rath","w","29.07.1960","","Teterow","Ich 🙂 – mein Stammbaum · Registernummer 293/1960",[["andreas","ehe","05.05.1984",""]],"karlheinz","friedel"],
 ["klaus","Klaus","Wegner","","m","unbekannt","","","Halbonkel – aus Huldas 2. Ehe",null,"ottoW","hulda"],
@@ -516,7 +560,7 @@ const SEED=[
 ["marieUllmann","Marie","Ullmann","","w","03.01.1914 (ungesichert)","","","Großmutter von Andreas Schütz",[["ullaMann","ehe","",""]]],
 ["marie","Marie-Sophie","Tabbert","geb. Kalkbrenner","w","15.04.1912","1981 (Datum folgt)","","Großmutter mütterlicherseits",[["wilhelm","ehe","",""]],"friedrichK","hulda"],
 ["marionHauff","Marion","Hauff","geb. Schütz","w","November 1964 (ungesichert)","","","Schwägerin – Schwester von Andreas · 1. Ehe: Bernd Walk · 2. Ehe: ein Hauff (Vorname folgt)",[["BerndWalk","ehe","",""],["Hauff","ehe","",""]],"schuetzVater","schuetzMutter"],
-["markus","Markus","Schütz","","m","unbekannt","","","Neffe von Andreas – Sohn von Michael (Markus mit C)",null,"michaelSchuetz","monikaS"],
+["markus","Marcus","Schütz","","m","unbekannt","","","Neffe von Andreas – Sohn von Michael und Monika Schütz",null,"michaelSchuetz","monikaS"],
 ["MarthaZiebarth","Martha","Ziebarth","","w","ca. 1872 (1957 im Alter von 75)","","Rogasen (Königreich Preußen / Provinz Posen, bis 1920 · heute Polen) – auf dem Sandberg","Urgroßtante mütterlicherseits – Mutter von Friedel, Dorothea und Hertha · Schwester von Hugo und Hulda",null],
 ["martina","Martina","Rath","geb. Lange","w","17.09.1957","","","Schwägerin – Frau von Thomas",[["thomas","ehe","",""]]],
 ["martinaReimer","Martina","Reimer","","w","04.05.1955","","","Mutter von Ulrike",[["wolfgangReimer","ehe","",""]]],
@@ -527,24 +571,42 @@ const SEED=[
 ["michaelSchuetz","Michael","Schütz","","m","21.12.1955","30.07.2024","","Schwager – Bruder von Andreas",[["monikaS","ehe","",""]],"schuetzVater","schuetzMutter"],
 ["monikaS","Monika","Schütz","geb. Schwarz","w","unbekannt","","","Ehefrau von Michael Schütz",[["michaelSchuetz","ehe","",""]]],
 ["NataliaZiebarth","Natalia","Ziebarth","geb. Bagdan","w","14.01.1976","","Ukraine","Ehefrau von Volker Ziebarth – geborene Bagdan",[["VolkerZiebarth","ehe","",""]]],
+["nolanOneal","Nolan","O'Neal","","m","unbekannt","","Amerika","Amerikaner irischer Herkunft (O'Neal) – Ehemann von Elisabeth O'Neal geb. Wegner; gingen gemeinsam nach Texas",[["elisabeth","ehe","",""]]],
 ["nathalie","Nathalie Maria Katharina","Schütz-Zimmermann","geb. Schütz","w","19.05.1987","","Potsdam","Tochter von Katharina · Registernummer 1366/1987",[["steven","ehe","",""]],"andreas","katharina"],
 ["nelly","Nelly Katharina","Schütz","","w","02.03.2015","","Potsdam","Enkelin von Katharina",null,"marco","ulrike"],
 ["oliver","Oliver","Rath","","m","30.11.2012","","","Großneffe – jüngster Sohn von Michael und Daniela",null,"michaelRath","daniela"],
 ["ottoW","Otto","Wegner","","m","unbekannt","","","2. Ehemann von Hulda",[["hulda","ehe","",""]]],
 ["peer","Peer","Rath","","m","31.01.1979","","","Neffe von Katharina – 2. Sohn von Volker (1. Ehe)",[["judith","ehe","",""]],"volker","viola"],
-["raik","Raik","Tabbert","","m","1963","","","Cousin mütterlicherseits – zweites Kind von Jürgen",null,"juergen","waltraud"],
-["RaniONeill","Rani","O'Neill","","m","unbekannt","","","Sohn von Elisabeth O'Neill",null,null,"elisabeth"],
-["RebeccaONeill","Rebecca","O'Neill","","w","ca. 1952","","Texas (Amerika) – lebt heute dort","Cousine 2. Grades von Katharina – Tochter von Elisabeth O'Neill",null,null,"elisabeth"],
+["raik","Raik","Tabbert","","m","19.06.1963","","","Cousin mütterlicherseits – Sohn von Jürgen und Waltraud",[["karinTabbert","ehe","",""]],"juergen","waltraud"],
+["dirkHeinisch","Dirk","Heinisch","","m","29.01.1963","16.02.2023","","Ehemann von Beatrix Heinisch geb. Tabbert – geheiratet am 21.09.1990",[["beatrix","ehe","21.09.1990",""]]],
+["rolfHeinisch","Rolf","Heinisch","","m","11.03.1990","","","Sohn von Beatrix und Dirk Heinisch – Vater von Sophie",null,"dirkHeinisch","beatrix"],
+["sophieLuedemann","Sophie","Lüdemann","","w","30.01.2017","","","Enkelin von Beatrix – Tochter von Rolf Heinisch",null,"rolfHeinisch",null],
+["rolandKlingberg","Roland","Klingberg","","m","27.04.1964","03.03.2008","","Erster Ehemann von Silke Fickel geb. Tabbert – Vater von Cindy und Silvia",[["silke","ehe","","1. Ehe"]]],
+["michaelFickel","Michael","Fickel","","m","10.12.1963","","","Zweiter Ehemann von Silke Fickel geb. Tabbert",[["silke","ehe","",""]]],
+["cindySchlawin","Cindy","Schlawin","geb. Tabbert","w","05.07.1983","","","Tochter von Silke und Roland Klingberg – Mutter von Emy und Henry",null,"rolandKlingberg","silke"],
+["emySchlawin","Emy","Schlawin","","w","05.04.2006","","","Enkelin von Silke – Tochter von Cindy Schlawin",null,null,"cindySchlawin"],
+["henrySchlawin","Henry","Schlawin","","m","23.12.2020","","","Enkel von Silke – Sohn von Cindy Schlawin",null,null,"cindySchlawin"],
+["silviaKlingberg","Silvia","Klingberg","","w","27.04.1988","","","Tochter von Silke und Roland Klingberg – Mutter von Felix und Emil",null,"rolandKlingberg","silke"],
+["felixKlingberg","Felix","Klingberg","","m","27.04.2022","","","Enkel von Silke – Sohn von Silvia Klingberg",null,null,"silviaKlingberg"],
+["emilKlingberg","Emil","Klingberg","","m","23.04.2025","","","Enkel von Silke – Sohn von Silvia Klingberg",null,null,"silviaKlingberg"],
+["karinTabbert","Karin Marion","Tabbert","geb. Fechner","w","02.09.1965","","","Ehefrau von Raik Tabbert",[["raik","ehe","",""]]],
+["stefanieTabbert","Steffanie","Tabbert","","w","10.06.1985","","","Tochter von Raik und Karin – schreibt sich mit zwei F (Steffanie), im Unterschied zur Cousine Stefanie von Toralf",null,"raik","karinTabbert"],
+["dianaTabbert","Diana","Tabbert","","w","03.06.1988","","","Tochter von Raik und Karin",null,"raik","karinTabbert"],
+["yvonneTabbert","Yvonne","Tabbert","","w","19.06.1990","","","Tochter von Raik und Karin – hat am 19. Juni Geburtstag, wie ihr Vater Raik",null,"raik","karinTabbert"],
+["RaniOneal","Rani","O'Neal","","m","unbekannt","","","Sohn von Elisabeth O'Neal und Nolan O'Neal",null,"nolanOneal","elisabeth"],
+["RebeccaOneal","Rebecca","O'Neal","","w","ca. 1952","","Texas (Amerika) – lebt heute dort","Cousine 2. Grades von Katharina – Tochter von Elisabeth und Nolan O'Neal",null,"nolanOneal","elisabeth"],
 ["RenateGuetschow","Renate","Gütschow","geb. Wegner","w","1939","2025","","Cousine 2. Grades von Katharina – Tochter von Helga Hageböck (geborene Wegner)",[["HeinoGuetschow","ehe","",""]],null,"HelgaHageboeck"],
 ["RichardHageboeck","Richard","Hageböck","","m","um 1908","","","Ehemann von Helga Hageböck – nicht der Vater von Renate",[["HelgaHageboeck","ehe","",""]]],
 ["robin","Robin","Rath","","m","02.07.1984","","","Neffe von Katharina",null,"thomas","martina"],
 ["RomyJaninaKoehler","Romy Janina","Köhler","","w","03.05.2024","","","Enkelkind von Karin",null,null,"TanjaAnnikaKoehler"],
 ["RuedigerSpiet","Rüdiger","Spiet","","m","unbekannt","","","Stevens Vater – kein Ehepartner von Andrea",[["andreaZimmermann","lieb","",""]]],
 ["saana","Saana","Rath","","w","01.11.2019","","","Großnichte von Katharina – Tochter von Linda und Stefan Gensch",null,"StephanGensch","linda"],
-["SabineBalow","Sabine","Balow","","w","unbekannt","","","Enkelin von Eva Wirth – Tochter von Ingrid Balow",null,null,"IngridBalow"],
+["sabineBahlo","Sabine","Bahlo","","w","unbekannt","","","Enkelin von Eva Wirth – Tochter von Ingrid Bahlo",null,null,"IngridBahlo"],
+["martinaKettler","Martina","Kettler","geb. Bahlo","w","unbekannt","","","Enkelin von Eva Wirth – Tochter von Ingrid Bahlo",null,null,"IngridBahlo"],
+["klausBahlo","Klaus","Bahlo","","m","unbekannt","verstorben (Datum folgt)","","Enkel von Eva Wirth – Sohn von Ingrid Bahlo · verstorben",null,null,"IngridBahlo"],
 ["sarina","Sarina Anita","Rath","","w","18.08.1967","","Ueckermünde","Schwester von Katharina · Registernummer 329/1967",[["SilvioKaemmer","ehe","",""],["ingmar","ehe","",""]],"karlheinz","friedel"],
 ["sebastian","Sebastian","Reimer","","m","unbekannt","","","Bruder von Ulrike",null,"wolfgangReimer","martinaReimer"],
-["silke","Silke","Tabbert","","w","1965","","","Cousine mütterlicherseits – drittes Kind von Jürgen",null,"juergen","waltraud"],
+["silke","Silke","Fickel","geb. Tabbert","w","25.08.1965","","","Cousine mütterlicherseits – Tochter von Jürgen und Waltraud · 1. Ehe mit Roland Klingberg, jetzt verheiratet mit Michael Fickel",[["rolandKlingberg","ehe","","1. Ehe"],["michaelFickel","ehe","",""]],"juergen","waltraud"],
 ["SilvioKaemmer","Silvio","Kämmer","","m","unbekannt","","","1. Ehemann von Sarina",[["sarina","ehe","",""]]],
 ["simone","Simone Carmen","Rath","","w","24.08.1963","","Teterow","Schwester von Katharina · Registernummer 348/1963",[["fitzner","lieb","",""]],"karlheinz","friedel"],
 ["skadi","Skadi Martina","Schütz","","w","23.04.2012","","Potsdam","Enkelin von Katharina",null,"marco","ulrike"],
@@ -553,18 +615,20 @@ const SEED=[
 ["steffen","Steffen","Rath","","m","26.06.1975","","","Neffe von Katharina – 1. Sohn von Volker (1. Ehe)",[["anja","ehe","",""],["ClaudiaHedwigWirsching","lieb","",""]],"volker","viola"],
 ["StephanGensch","Stephan","Gensch","","m","unbekannt","","","Vater von Saana Rath · getrennt lebender Partner von Linda",[["linda","trennung","",""]]],
 ["steven","Steven","Zimmermann","geb. Rüdiger","m","13.08.1984","","","Schwiegersohn – leiblicher Sohn von Andrea, von Detlef Zimmermann adoptiert (trug bis zur Adoption den Geburtsnamen Rüdiger)",[["nathalie","ehe","",""]],"RuedigerSpiet","andreaZimmermann"],
-["ZusanneZiebarth","Zusanne","Ziebarth","geb. Larson","w","17.06.1970","","USA","Ehefrau von Frank Ziebarth – geborene Larson · aus Amerika",[["FrankZiebarth","ehe","",""]]],
+["SusanneZiebarth","Susanne","Ziebarth","geb. Larson","w","17.06.1970","","USA","Ehefrau von Frank Ziebarth – geborene Larson · aus Amerika",[["FrankZiebarth","ehe","",""]]],
 ["TanjaAnnikaKoehler","Tanja Annika","Köhler","","w","04.09.1990","","","Nichte 2. Grades von Katharina – Tochter von Karin",null,null,"karin"],
 ["thomas","Thomas Karl-Wilhelm","Rath","","m","11.12.1958","","Teterow","Bruder von Katharina · Registernummer 387/1958",[["martina","ehe","",""]],"karlheinz","friedel"],
 ["thomasWalk","Thomas","Walk","","m","unbekannt","","","Neffe von Katharina – jüngster Sohn von Schwägerin Marion",null,"BerndWalk","marionHauff"],
-["thoralf","Thoralf","Tabbert","","m","unbekannt","","","Cousin mütterlicherseits – viertes Kind von Jürgen",null,"juergen","waltraud"],
+["thoralf","Toralf","Tabbert","","m","02.03.1968","","Teterow","Cousin mütterlicherseits – viertes Kind von Jürgen und Waltraud",[["birgitTabbert","ehe","30.12.1994",""]],"juergen","waltraud"],
+["birgitTabbert","Birgit Jutta","Tabbert","geb. Kaiser","w","14.03.1962","","","Ehefrau von Toralf – geheiratet am 30.12.1994",[["thoralf","ehe","30.12.1994",""]]],
+["stefanieT","Stefanie","Tabbert","geb. Kaiser","w","03.03.1982","","","Tochter von Birgit, von Toralf adoptiert – trägt seitdem den Namen Tabbert",null,"thoralf","birgitTabbert"],
+["tristan","Tristan","Tabbert","","m","12.11.1998","","","Sohn von Toralf und Birgit",null,"thoralf","birgitTabbert"],
 ["timo","Timo","Rath","","m","08.08.2018","","","Großneffe – Sohn von Peer und Judith",null,"peer","judith"],
 ["ulrike","Ulrike","Schütz","geb. Reimer","w","10.11.1981","","","Schwiegertochter – Frau von Marco",[["marco","ehe","",""]],"wolfgangReimer","martinaReimer"],
 ["viola","Viola","Rath","geb. Vogt","w","17.11.1955","","","1. Schwägerin – erste Frau von Volker",[["volker","ehe","",""]]],
 ["volker","Volker Karl-Heinz","Rath","","m","08.01.1956","","Teterow","Bruder von Katharina · Registernummer 10/1956",[["viola","ehe","",""],["marianne","ehe","18.10.1985",""]],"karlheinz","friedel"],
 ["VolkerZiebarth","Volker","Ziebarth","","m","28.02.1976","","Potsdam","2. Sohn von Hans-Joachim und Christiane Ziebarth",[["NataliaZiebarth","ehe","",""]],"HansJoachimZiebarth","ChristianeCarolaZiebarth"],
-["vonOtto","","von Otto","","m","unbekannt","","","Adliger – Vorname unbekannt · liiert mit Friedel Ziebarth",[["FriedelZiebarth","lieb","",""]]],
-["waltraud","Waltraud","Tabbert","","w","unbekannt","Datum folgt","","Frau von Onkel Jürgen",[["juergen","ehe","",""]]],
+["waltraud","Waltraud","Tabbert","geb. Kühl","w","23.09.1940","09.07.2022","","Frau von Onkel Jürgen – geborene Kühl, geheiratet am 06.10.1961",[["juergen","ehe","06.10.1961",""]],null,null],
 ["wernerKurt","Werner Kurt","Buhl","","m","04.05.1932","04.06.2011","","Onkel – Ehemann von Tante Annemarie",[["annemarieB","ehe","",""]]],
 ["wernerO","Werner Ottmar","Buhl","","m","20.05.1968","","","Cousin von Katharina",null,"wernerKurt","annemarieB"],
 ["wilhelm","Wilhelm","Tabbert","","m","26.01.1908","26.07.1945 · 0:35 Uhr","Hitzdorf (Bezirk Answalde) · Kölzig (heute Kolsk, Polen)","Großvater mütterlicherseits – Bruder von Meta, Else und Frieda · Sohn von August und Ernestine · Stellmacher, Unteroffizier · gestorben im Spital an der Drau (German Military Hospital), Sterbeurkunde Nr. 137/1945",[["marie","ehe","",""]],"august","ernestine"],
@@ -592,9 +656,9 @@ function hasAncestor(id,anc){if(id===anc)return true;const p=MAP[id];if(!p)retur
  return [p.vater,p.mutter].filter(Boolean).some(function(x){return hasAncestor(x,anc)})}
 function originOf(id){const o=[];
  if(hasAncestor(id,"karlheinz")||hasAncestor(id,"karlMartin"))
-  o.push("🩸 Zirzipanenblut – väterlicherseits aus Teterow, dem Kernland der slawischen Zirzipanen (um den Teterower See, 7.–12. Jh.) – von der Familie Möller-Rath: die Rath aus Teterow und die Möller aus Neu Wokern, beide im Zirzipanen-Land.");
+  o.push("🩸 Zirzipanenblut – väterlicherseits aus Teterow, dem Kernland der slawischen Zirzipanen (um den Teterower See, 7.–12. Jh.) – von den Familien Möller und Rath: die Rath aus Teterow und die Möller aus Neu Wokern, beide im Zirzipanen-Land.");
  if(hasAncestor(id,"friedel")||hasAncestor(id,"wilhelm")||hasAncestor(id,"hulda")||hasAncestor(id,"august"))
-  o.push("🌾 Leubuzzi & Ziebarth-Linie – mütterlicherseits aus Kölzig/Land Lebus, Arnswalde (Provinz Posen) und der Ziebarth-Familie (Sohn des Siegbert)");
+  o.push("🌾 Burgunder-Land, Leubuzzi & Polanen – mütterlicherseits die Familien Ziebarth, Kalkbrenner und Tabbert, alle aus der Provinz Posen und der Neumark (heute alles Polen): Rogasen und Woldenberg (Ziebarth), Rogasen, Woldenberg, Arnswalde und Marienwalde (Kalkbrenner) sowie Kölzig und Arnswalde (Tabbert). Diese Gegend an mittlerer Oder und Warthe war bis zum großen Wandern im 5. Jahrhundert Siedlungsland der Burgunder – ihr Zug an den Rhein nach Worms und ihr Untergang 437 sind im Nibelungenlied verewigt. Später, nachdem die Slawen eingewandert waren, lag diese Gegend genau an der Grenze zwischen dem Land der Leubuzzi (um Lebus an der Oder) und dem Land der Polanen (um Posen).");
  if(hasAncestor(id,"schuetzVater")||hasAncestor(id,"schuetzMutter"))
   o.push("🏛️ Schütz-Linie aus Thüringen – Kurt Schütz wurde im Land der Hermunduren geboren, aus denen die Thüringer hervorgingen (Annemarie: Herzberger Land)");
  if(hasAncestor(id,"wernerKurt")||hasAncestor(id,"annemarieB"))
@@ -602,7 +666,7 @@ function originOf(id){const o=[];
  return o}
 function renderPersons(){
  const q=document.getElementById("psuche").value.toLowerCase();
- const a=P.filter(function(p){return !q||(nameOf(p)+" "+(p.gn||"")+" "+(p.note||"")).toLowerCase().indexOf(q)>-1})
+ const a=P.filter(function(p){return !AZ||(p.nn||"").toUpperCase().charAt(0)===AZ}).filter(function(p){return !q||(nameOf(p)+" "+(p.gn||"")+" "+(p.note||"")).toLowerCase().indexOf(q)>-1})
   .sort(function(x,y){return nameOf(x).localeCompare(nameOf(y),"de")});
  document.getElementById("plist").innerHTML=a.map(function(p){
   return "<div class='prow' onclick=\"selectPerson('"+p.id+"')\"><span><span class='nm'>"+esc(nameOf(p))+"</span>"+(p.gest?" ✝":"")+"<br><span class='meta'>"+esc(p.gn)+(p.gn?" · ":"")+esc(p.note)+"</span></span><span class='meta'>"+esc(p.geb)+"</span></div>"}).join("")}
@@ -639,7 +703,7 @@ function selectPerson(id){if(!MAP[id])return;
   "<button class='btn' onclick=\"go('staemme')\">🏛️ Stämme A–Z</button></div>";
  document.getElementById("ppanel").innerHTML=html;go("persondetail")}
 /* ============ NAVIGATION & MODALS ============ */
-function go(v){const views=["staemme","roemer","namen","namendetail","ahnen","tribedetail","persondetail"];
+function go(v){const views=["staemme","roemer","eradetail","namen","namendetail","ahnen","tribedetail","persondetail"];
  views.forEach(function(x){document.getElementById(x).classList.remove("on")});
  document.getElementById(v).classList.add("on");
  document.querySelectorAll("nav button").forEach(function(b){b.classList.toggle("on",b.getAttribute("data-nav")===v)});
@@ -658,7 +722,7 @@ function renderStats(){
  if(!box)return;
  var cell=function(n,l,c){return "<div style='text-align:center;padding:10px;border:1px solid #e5dcc8;border-radius:10px"+(c?";background:#faf6ee":"")+"'><div style='font-size:26px;font-weight:700;color:"+c+"'>"+n+"</div><div style='font-size:12px'>"+l+"</div></div>"};
  box.innerHTML="<div style='display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:8px'>"+
-  cell(m+w,"👥 Gesamt: alle 140 Personen","#b08d3f",true)+
+  cell(m+w,"👥 Gesamt: alle "+(m+w)+" Personen","#b08d3f",true)+
   cell(w,"👩 Frauen und Mädchen","#8a2d7a")+
   cell(m,"👨 Männer und Jungs","#012169")+
   cell(leb,"💚 leben (kein Sterbedatum bekannt)","#2e7d32")+
@@ -666,7 +730,24 @@ function renderStats(){
   cell(linked,"🔗 mit Eltern verknüpft – davon "+both+" mit beiden Elternteilen","#d31334")+
   "</div>";
 }
+function renderNameStats(){
+ var cnt={};
+ SEED.forEach(function(s){var nn=(s[2]||"").trim();if(!nn)return;cnt[nn]=(cnt[nn]||0)+1});
+ var arr=Object.keys(cnt).map(function(k){return[k,cnt[k]]}).sort(function(a,b){return b[1]-a[1]||a[0].localeCompare(b[0],"de")});
+ var max=arr.length?arr[0][1]:1;
+ var box=document.getElementById("namebox");if(!box)return;
+ box.innerHTML=arr.map(function(e){
+  return "<div style='display:flex;align-items:center;gap:8px;padding:4px 0'><div style='width:112px;font-weight:700;color:var(--navy);font-size:.82rem'>"+e[0]+"</div><div style='flex:1;background:#eee7d7;border-radius:6px;height:18px'><div style='height:18px;border-radius:6px;background:linear-gradient(90deg,#b08d3f,#d31334);width:"+Math.round(e[1]/max*100)+"%'></div></div><div style='width:64px;text-align:right;font-weight:700;font-size:.82rem'>"+e[1]+"</div></div>"}).join("")}
+var AZ="";
+function setAZ(l){AZ=(AZ===l)?"":l;renderAZ();renderPersons()}
+function renderAZ(){
+ var letters=[];for(var c=65;c<=90;c++)letters.push(String.fromCharCode(c));
+ document.getElementById("azbar").innerHTML=
+  "<button class='azb"+(AZ===""?" on":"")+"' onclick=\"setAZ('')\">✳ Alle</button> "+
+  letters.map(function(l){return "<button class='azb"+(AZ===l?" on":"")+"' onclick=\"setAZ('"+l+"')\">"+l+"</button>"}).join(" ")}
+renderAZ();
 renderStats();
+renderNameStats();
 renderPersons();
 </script>
 </body>
